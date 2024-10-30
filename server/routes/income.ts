@@ -28,5 +28,12 @@ router.get('/', authMiddleware, async (req, res) => {
     res.status(500).json({ message: 'Error fetching incomes' });
   }
 });
-
+router.delete('/:id', authMiddleware, async (req, res) => {
+  try {
+    await Income.findOneAndDelete({ _id: req.params.id, user: req.user.id });
+    res.json({ message: 'Goal deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting goal' });
+  }
+});
 export default router;
