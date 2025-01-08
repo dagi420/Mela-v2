@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import AnimatedBackground from './components/AnimatedBackground';
 import Home from './pages/Home';
 import Dashboard from './pages/Dasboard';
 import Login from './pages/Login';
@@ -21,10 +22,13 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-gray-100">
+      <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-dark-900 
+                      text-dark-900 dark:text-dark-50 relative">
+        <AnimatedBackground />
         <Header />
+        
         <motion.main
-          className="flex-grow container mx-auto px-4 py-8"
+          className="flex-grow container mx-auto px-4 py-8 relative z-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

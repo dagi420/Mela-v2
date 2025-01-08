@@ -5,6 +5,9 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearSca
 import { TrendingUp, TrendingDown, AlertCircle, CheckCircle, DollarSign, PiggyBank, Target, CreditCard } from 'lucide-react';
 import { fetchExpenses, fetchIncomes, fetchGoals, fetchInvestments } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
+import FinancialHealthAdvisor from '../components/FinancialHealthAdvisor';
+import { calculateFinancialMetrics } from '../utils/financialcalculations';
+
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, Title);
 
@@ -269,7 +272,7 @@ const Dashboard: React.FC = () => {
           <Line data={cashflowData} />
         </motion.div>
       </div>
-
+              
       <motion.div
         className="bg-white p-6 rounded-lg shadow-md"
         initial={{ opacity: 0, y: 20 }}
